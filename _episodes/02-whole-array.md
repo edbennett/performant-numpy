@@ -321,7 +321,7 @@ peaked_function = (np.sin(x_values**2 + y_values**2) /
 plt.imshow(peaked_function)
 plt.show()
 ~~~
-{: .langauge-python}
+{: .language-python}
 
 If we are only interested in the highest points, we can isolate these
 using the `>` sign as usual. This gives us back an array of boolean
