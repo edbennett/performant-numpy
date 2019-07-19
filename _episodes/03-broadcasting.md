@@ -1,7 +1,7 @@
 ---
 title: "Broadcasting"
-teaching: 20
-exercises: 10
+teaching: 30
+exercises: 20
 questions:
 - "How can I do whole-array operations with arrays of different shape?"
 objectives:
