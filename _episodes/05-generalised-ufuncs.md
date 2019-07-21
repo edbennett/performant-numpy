@@ -155,9 +155,10 @@ slower than Numpy's built-in matrix multiplier.
 >
 > The function `ftcs` below uses second-order finite differences to
 > solve a heat transfer problem. Use `guvectorize` to turn `ftcs` into
-> a generalised ufunc, so that `run_ftcs` works properly. `ftcs` has
+> a generalised ufunc. `ftcs` has
 > already been written from the point of view of acting as a gufunc,
-> so only the signature needs to be provided.
+> so only the signature needs to be provided, and the now-superfluous
+> `return` removed.
 >
 > ~~~
 > import numpy
@@ -180,6 +181,9 @@ slower than Numpy's built-in matrix multiplier.
 >         Tn[0, j] = T[0, j]
 >         Tn[I - 1, j] = Tn[I - 2, j]
 >
+>     #remove when vectorising
+>     return Tn
+>
 > def run_ftcs():
 >     L = 1.0e-2
 >     nx = 101
@@ -195,7 +199,9 @@ slower than Numpy's built-in matrix multiplier.
 >     Ti[:,0] = 100
 >
 >     for t in range(nt):
->         Tn = ftcs(Ti, alpha, dt, dx)
+>         # creates an empty array with the same dimensions as Ti
+>         Tn = numpy.empty_like(Ti)
+>         Tn = ftcs(Ti, alpha, dt, dx, Tn)
 >         Ti = Tn.copy()
 >
 >     return Tn, x
