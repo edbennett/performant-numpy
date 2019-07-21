@@ -388,6 +388,29 @@ print(peaked_function[mask])
 ~~~
 {: .language-python}
 
+This can also be assigned to (i.e. used on the *left*-hand side of an
+`=`)! For example, another way to remove the negative elements would
+be:
+
+~~~
+peaked_function[peaked_function < 0] = 0
+~~~
+{: .language-python}
+
+Numpy recognises that this kind of operation is something we will want
+to do frequently, and gives us a function for it, called
+`np.where()`. The above is equivalent to:
+
+~~~
+peaked_function = np.where(peaked_function < 0, 0, peaked_function)
+~~~
+{: .language-python}
+
+The first argument is the condition, the second the value to assign if
+the condition is `True`, and the third the value to assign if it is
+`False`. All three of these can be arrays, provided they can be
+broadcast together (see the next episode for more details on that).
+
 
 ### Masked arrays
 
@@ -557,6 +580,83 @@ operator.
 > {: .solution}
 {: .challenge}
 
+> ## Mandelbrot
+>
+> [Wikipedia](https://en.wikipedia.org/wiki/Mandelbrot_set) states:
+> The Mandelbrot set is the set of complex numbers $$c$$ for which the
+> function $$f_c(z) = z^2 + c$$ does not diverge when iterated from
+> $$z=0$$ , i.e., for which the sequence $f_c(0)$, $f_{c}(f_{c}(0))$,
+> etc., remains bounded in absolute value.
+>
+> We can approximate the set numerically by iterating some large
+> number of times and testing for exceeding some threshold. We can
+> then plot the resulting set, including using colour for the number
+> of iterations required to exceed the threshold.
+>
+> An example of doing this with Numpy arrays but without whole-array
+> operations would be (adapted from 
+> [JF Puget's examples](https://gist.github.com/jfpuget/60e07a82dece69b011bb):
+>
+> ~~~
+> def mandelbrot(c, maxiter):
+>     z = c
+>     for n in range(maxiter):
+>         if abs(z) > 2:
+>             return n
+>         z = z*z + c
+>     return 0
+>
+> def mandelbrot_set(xmin, xmax, ymin, ymax, width, height, maxiter):
+>     real_range = np.linspace(xmin, xmax, width)
+>     imaginary_range = np.linspace(ymin, ymax, height)
+>     result = np.empty((width, height))
+>     for i in range(width):
+>         for j in range(height):
+>             result[i,j] = mandelbrot(real_range[i] + 
+>                                      1j*imaginary_range[j],maxiter)
+>     return result
+> ~~~
+> {: .language-python}
+>
+> (If you've not complex numbers done in Python before, `1j` is
+> Python's notation for the imaginary unit.)
+>
+> You can plot an example view of the resulting fractal with:
+>
+> ~~~
+> plt.imshow(mandelbrot_set(-2, 0.5, -1.25, 1.25, 500, 500, 20).T)
+> plt.show()
+> ~~~
+> {: .language-python}
+>
+> Try to rewrite this using Numpy whole-array operations. How does the
+> performance compare between the two versions?
+>
+>> ## Solution
+>>
+>> ~~~
+>> def mandelbrot_wholearray(c, maxiter):
+>>     output = np.zeros_like(c, dtype=np.int32)
+>>     z = np.zeros_like(c, dtype=np.complex64)
+>>     for n in range(maxiter):
+>>         z = z*z + c
+>>         done = np.abs(z) > 2.0
+>>         c[done] = 0
+>>         z[done] = 0
+>>         output[done] = n
+>>     return output
+>> 
+>> def mandelbrot_set_wholearray(xmin, xmax, ymin, ymax, width, height, maxiter):
+>>     real_range = np.linspace(xmin, xmax, width)
+>>     imaginary_range = np.linspace(ymin, ymax, height)
+>>     real_parts, imaginary_parts = np.meshgrid(
+>>         real_range, 1j * imaginary_range, sparse=False
+>>     )
+>>     return mandelbrot_wholearray(real_parts + imaginary_parts, maxiter)
+>> ~~~
+>> {: .language-python}
+> {: .solution}
+{: .challenge}
 
 > ## Multiple cores?
 >
