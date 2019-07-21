@@ -1,7 +1,7 @@
 ---
 title: "Generalised ufuncs"
 teaching: 30
-exercises: 20
+exercises: 25
 questions:
 - "What if I want performant functions operating on Numpy arrays that aren't
 element-wise?"

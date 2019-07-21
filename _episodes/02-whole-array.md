@@ -1,7 +1,7 @@
 ---
 title: "Whole-array operations"
 teaching: 30
-exercises: 20
+exercises: 30
 questions:
 - "How can I avoid looping when performing operations across arrays in Numpy?"
 - "What about when there are conditionals?"

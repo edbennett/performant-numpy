@@ -1,7 +1,7 @@
 ---
 title: "Custom ufuncs"
 teaching: 20
-exercises: 20
+exercises: 25
 questions:
 - "What can I do if Numpy's built-in ufuncs don't do what I need them to?"
 objectives:
