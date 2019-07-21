@@ -354,6 +354,7 @@ values_4d * matrix_weights
 > Read in an image from your hard drive with the following code
 >
 > ~~~
+> %matplotlib inline
 > import imageio
 > from matplotlib import pyplot as plt
 > image = imageio.imread('cat.jpg') / 256
