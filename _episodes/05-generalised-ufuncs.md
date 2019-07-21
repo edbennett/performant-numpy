@@ -155,9 +155,10 @@ slower than Numpy's built-in matrix multiplier.
 >
 > The function `ftcs` below uses second-order finite differences to
 > solve a heat transfer problem. Use `guvectorize` to turn `ftcs` into
-> a generalised ufunc, so that `run_ftcs` works properly. `ftcs` has
+> a generalised ufunc. `ftcs` has
 > already been written from the point of view of acting as a gufunc,
-> so only the signature needs to be provided.
+> so only the signature needs to be provided, and the now-superfluous
+> `return` removed.
 >
 > ~~~
 > import numpy
