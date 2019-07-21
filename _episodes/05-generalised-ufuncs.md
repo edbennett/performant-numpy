@@ -8,7 +8,12 @@ element-wise?"
 objectives:
 - "Be able to use Numba to write custom generalised universal functions"
 keypoints:
-- "Use the `@guvectorize` decorator to turn elemental functions into ufuncs"
+- "Use the `@guvectorize` decorator to turn elemental functions into
+generalised ufuncs"
+- "Both a signature (showing datatypes and dimensionalities) and a
+layout (showing relationships between indices) are required"
+- "Explicitly initialise the output array within your generalised
+ufunc where possible"
 ---
 
 (Adapted from the [Scipy 2017 Numba tutorial](https://github.com/gforsyth/numba_tutorial_scipy2017/blob/master/notebooks/08.Make.generalized.ufuncs.ipynb).)
