@@ -249,6 +249,39 @@ Performance Computing (HPC) system then this is important!)
 > {: .solution}
 {: .challenge}
 
+> ## Mandelbrot ufunc
+>
+> Look back at the Mandelbrot example we rewrote using Numpy
+> whole-array operations. Try rewriting the `mandelbrot_numpy`
+> function to be a ufunc using Numba. How does the performance compare
+> to the pure Numpy version?
+>
+>> ## Solution
+>>
+>> ~~~
+>> import numpy as np
+>> from numba import vectorize
+>>
+>> @vectorize
+>> def mandelbrot_ufunc(c, maxiter):
+>>     z = c
+>>     for n in range(maxiter):
+>>         if abs(z) > 2:
+>>             return n
+>>         z = z*z + c
+>>     return 0
+>>
+>>
+>> def mandelbrot_set_ufunc(xmin, xmax, ymin, ymax, width, height, maxiter):
+>>     real_range = np.linspace(xmin, xmax, width)
+>>     imaginary_range = np.linspace(ymin, ymax, height)
+>>     return mandelbrot_ufunc(real_range + 1j * imaginary_range[:,
+>>     np.newaxis], maxiter)
+>> ~~~
+>> {: .language-python}
+> {: .solution}
+{: .challenge}
+
 > ## Multiple datatypes
 >
 > Vectorization isn't limited to a single datatype&mdash;you don't have
