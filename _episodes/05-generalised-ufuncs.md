@@ -180,6 +180,9 @@ slower than Numpy's built-in matrix multiplier.
 >         Tn[0, j] = T[0, j]
 >         Tn[I - 1, j] = Tn[I - 2, j]
 >
+>     #remove when vectorising
+>     return Tn
+>
 > def run_ftcs():
 >     L = 1.0e-2
 >     nx = 101
@@ -195,7 +198,9 @@ slower than Numpy's built-in matrix multiplier.
 >     Ti[:,0] = 100
 >
 >     for t in range(nt):
->         Tn = ftcs(Ti, alpha, dt, dx)
+>         # creates an empty array with the same dimensions as Ti
+>         Tn = numpy.empty_like(Ti)
+>         Tn = ftcs(Ti, alpha, dt, dx, Tn)
 >         Ti = Tn.copy()
 >
 >     return Tn, x
