@@ -3,8 +3,7 @@ title: "Compiling regular functions with Numba"
 teaching: 10
 exercises: 10
 questions:
-- "What if I want to speed up non-broadcastable functions?
-element-wise?"
+- "What if I want to speed up non-broadcastable functions?"
 objectives:
 - "Be able to use Numba's `jit` decorator to just-in-time compile functions"
 keypoints:
