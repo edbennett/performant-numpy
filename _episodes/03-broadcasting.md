@@ -340,6 +340,37 @@ values_4d * matrix_weights
 ~~~
 {: .language-python}
 
+
+> ## Outer products
+>
+> In the solution of Mandelbrot example in the previous episode, I used
+> `np.meshgrid` to set up the initial `c` values. Specifically, the
+> lines (paraphrased slightly):
+>
+> ~~~
+> real_range = np.linspace(xmin, xmax, width)
+> imaginary_range = np.linspace(ymin, ymax, height)
+> real_parts, imaginary_parts = np.meshgrid(
+>     real_range, 1j * imaginary_range, sparse=False
+> )
+> c = real_parts + imaginary_parts
+> ~~~
+> {: .language-python}
+>
+> Rewrite the third and fourth lines to use broadcasting rather than
+> `np.meshgrid`.
+>
+>> ## Solution
+>>
+>> ~~~
+>> real_range = np.linspace(xmin, xmax, width)
+>> imaginary_range = np.linspace(ymin, ymax, height)
+>> real_range + 1j * imaginary_range[:, np.newaxis]
+>> ~~~
+>> {: .language-python}
+> {: .solution}
+{: .challenge}
+
 > ## Array broadcasts for image manipulation
 >
 > Images can be represented in Numpy as three-dimensional arrays:
