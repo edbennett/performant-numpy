@@ -351,7 +351,7 @@ values_4d * matrix_weights
 > function which reads an image into an array with this format.
 > (This functionality was previously provided by `scipy.misc`.)
 >
-> Read in an image from your hard drive with the following code
+> Read in a JPEG image from your hard drive with the following code
 >
 > ~~~
 > %matplotlib inline
@@ -440,5 +440,10 @@ values_4d * matrix_weights
 >>    plt.show()
 >>    ~~~
 >>    {: .language-python}
+>>
+>> If you instead read in an image with an alpha channel, some extra
+>> work would be needed to work out what to do with that, since it
+>> doesn't represent colour data in the way that the other three
+>> channels do.
 > {: .solution}
 {: .challenge}
