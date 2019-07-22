@@ -11,8 +11,7 @@ title: Setup
 
   <p>
     In this lesson, we will use Python with the Numpy and Numba
-    libaries, and we will interact with Python via the <a href="https://jupyter.org/">Jupyter notebook</a>Jupyter
-    notebook interface, a programming environment that runs in a web browser. 
+    libaries, and we will interact with Python via the <a href="https://jupyter.org/">Jupyter notebook</a> interface, a programming environment that runs in a web browser. 
 	You can install each of these by hand, but we would recommend that you
     download <a href="https://www.anaconda.com/distribution/">Anaconda</a>,
     an all-in-one installer including all these prerequisites.
