@@ -404,7 +404,7 @@ values_4d * matrix_weights
 > 2. Make the image fade to black from left to right. (I.e. all colour
 >    channels are multiplied by 1 at the left edge, zero at the right
 >    edge, and a number between 0 and 1 in between.)
-> 3. Make the image fade to whide from top to bottom.
+> 3. Make the image fade to white from top to bottom.
 > 4. Use a variant of the `peaked_function` in the previous episode
 >    to multiply all colour channels of the image.
 > 5. Do the same, but applying it only to the red channel.
