@@ -438,7 +438,7 @@ operator.
 > ## Performance comparison
 >
 > The mean that we calculated using a masked arrays could equally
-> well have been calcualted using multiplication or fancy indexing.
+> well have been calculated using multiplication or fancy indexing.
 > Implement these two methods, and compare their performance.
 >
 >> ## Solution
@@ -457,7 +457,7 @@ operator.
 >> ~~~
 >> {: .output}
 >>
->> With multiplication:
+>> With masks:
 >>
 >> ~~~
 >> %%timeit
@@ -471,7 +471,7 @@ operator.
 >> ~~~
 >> {: .output}
 >>
->> With masks:
+>> With multiplication:
 >>
 >> ~~~
 >> %%timeit
