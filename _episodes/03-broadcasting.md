@@ -453,6 +453,11 @@ values_4d * matrix_weights
 >>    x_values, y_values = np.meshgrid(x_range, y_range, sparse=False)
 >>    peaked_function = (np.sin(x_values**2 + y_values**2) /
 >>                       (x_values**2 + y_values**2) ** 0.25)
+>>
+>>    #scale the output to be between 0 and 1.0, not doing this causes errors on some systems
+>>    peaked_function = peaked_function / 2
+>>    peaked_function = peaked_function + 0.5
+>>
 >>    peaked_function = peaked_function[:, :, np.newaxis]
 >>    plt.imshow(peaked_function * image)
 >>    plt.show()
