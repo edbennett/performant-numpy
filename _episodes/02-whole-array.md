@@ -180,8 +180,8 @@ higher-dimensional case, the indices are filled left-to-right.
 ![An illustration showing a long rainbow-coloured array being divided into four blocks, with the four blocks stacked top-to-bottom.](../fig/rainbow-reshape.svg)
 
 ~~~
-ps = np.arange(1000000).reshape((1000, 1000))
-qs = np.arange(1000000).reshape((1000, 1000)) + 2
+ps = np.arange(1_000_000).reshape((1000, 1000))
+qs = np.arange(1_000_000).reshape((1000, 1000)) + 2
 
 %timeit simple_numpy_dists(ps, qs)
 ~~~

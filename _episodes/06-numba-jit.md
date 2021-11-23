@@ -54,7 +54,7 @@ setup step, so that it gets compiled before we start trying to time
 its run time.
 
 ~~~
-a = np.arange(10000).reshape((100, 100))
+a = np.arange(10_000).reshape((100, 100))
 a_plus_tr_tanh_a(a)
 %timeit a_plus_tr_tanh_a(a)
 ~~~
@@ -106,7 +106,7 @@ def a_plus_tr_tanh_a(a):
     return a + trace
 
 
-a = np.arange(10000).reshape((100, 100))
+a = np.arange(10_000).reshape((100, 100))
 a_plus_tr_tanh_a(a)
 %timeit a_plus_tr_tanh_a(a)
 ~~~
