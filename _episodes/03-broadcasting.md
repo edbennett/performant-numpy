@@ -270,7 +270,7 @@ array([[[[   0,    0,    0,    0,    0],
 
 If we want to work on different axes, then as an alternative to 
 `reshape`, we can also use `expand_dims`. For example, to use 
-a $$2 \times 3$$ array to work on the leftmost two columns of
+a $2 \times 3$ array to work on the leftmost two columns of
 `values_4d`:
 
 ~~~
