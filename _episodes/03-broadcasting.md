@@ -114,7 +114,7 @@ print("values:", values.shape)
 print("column_weights:", column_weights.shape)
 print("row_weights:", row_weights.shape)
 ~~~
-{: .langauge-python}
+{: .language-python}
 
 ~~~
 values: (4, 4)
