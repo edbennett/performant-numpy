@@ -126,7 +126,7 @@ time saved by running in parallel.
 
 > ## Larger problem size
 >
-> Retry the example above with a matrix size of $$1000 \times 1000$
+> Retry the example above with a matrix size of $1000 \times 1000$
 > instead of $100 \times 100$, and see how the parallel and serial
 > performance compare.
 {: .challenge}
